@@ -101,9 +101,9 @@
     color: var(--muted);
     font-size: 13px;
   }
-  td.shot { width: 168px; }
+  td.shot, td.updated { width: 150px; }
   img {
-    width: 140px;
+    width: 120px;
     height: auto;
     display: block;
     border: 1px solid var(--line);
@@ -127,6 +127,32 @@
     outline: 2px solid var(--ink);
     outline-offset: 1px;
   }
+  .drop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    border: 1px dashed #1c1917;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .drop input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  .drop span {
+    padding: 12px;
+    font: 14px/1.3 system-ui, sans-serif;
+    color: var(--muted);
+    text-align: center;
+  }
+  .drop img { display: none; width: 100%; height: auto; }
+  .drop.has img { display: block; }
+  .drop.has span { display: none; }
   .missing {
     font-family: system-ui, sans-serif;
     color: var(--muted);
@@ -145,7 +171,7 @@
 <body>
 <header>
   <h1>Buffalo empty states</h1>
-  <p>English copy, then the current phone screen, then a box for the wording you want instead, then a box for design comments. Click Save when you want to keep both. Saving updates the address bar and copies that link. Anyone who opens the copied link sees what you wrote. Shot on 24 Nov 2026 from the test account. The empty log, quiet day, and future day were shown by hiding that account’s moments in the screenshot browser only. Nothing was deleted, and the account was not signed out.</p>
+  <p>English copy, the current phone screen, a box for the wording you want instead, then a place for a screenshot of that new wording, then design comments. Click Add a screenshot on that row and choose the image. Click Save to copy a link of the words. The picture stays in this browser. Shot on 24 Nov 2026 from the test account. The empty log, quiet day, and future day were shown by hiding that account’s moments in the screenshot browser only. Nothing was deleted, and the account was not signed out.</p>
   <p class="save-row"><button id="save" type="button">Save</button><span id="save-status"></span></p>
 </header>
 <table>
@@ -156,6 +182,7 @@
       <th>Copy</th>
       <th>Screen</th>
       <th>New copy</th>
+      <th>Updated screen</th>
       <th>Design comments</th>
     </tr>
   </thead>
@@ -172,6 +199,7 @@
       </td>
       <td class="shot"><img src="shots/empty-log.png" alt="Empty log card under the week calendar"></td>
       <td class="edit"><textarea data-key="empty-log" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="empty-log" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-empty-log" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -184,6 +212,7 @@
       </td>
       <td class="shot"><img src="shots/quiet-day.png" alt="Quiet day card for Sunday, November 22"></td>
       <td class="edit"><textarea data-key="quiet-day" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="quiet-day" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-quiet-day" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -191,6 +220,7 @@
       <td class="copy"><p>Nothing here yet.</p></td>
       <td class="shot"><img src="shots/future-day.png" alt="Thursday, November 26 with nothing here yet"></td>
       <td class="edit"><textarea data-key="future-day" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="future-day" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-future-day" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -198,6 +228,7 @@
       <td class="copy"><p>No loaded moments mention “zzzz-no-moment”.</p></td>
       <td class="shot"><img src="shots/search.png" alt="Search with no matching moments"></td>
       <td class="edit"><textarea data-key="search" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="search" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-search" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -208,6 +239,7 @@
       </td>
       <td class="shot"><img src="shots/search-filter.png" alt="Highlights filter with no matching moments"></td>
       <td class="edit"><textarea data-key="search-filter" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="search-filter" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-search-filter" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -220,6 +252,7 @@
       </td>
       <td class="shot"><img src="shots/insights.png" alt="Insights waiting card"></td>
       <td class="edit"><textarea data-key="insights" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="insights" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-insights" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -230,6 +263,7 @@
       </td>
       <td class="shot"><img src="shots/saved.png" alt="Saved insights empty page"></td>
       <td class="edit"><textarea data-key="saved" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="saved" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-saved" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -244,6 +278,7 @@
       </td>
       <td class="shot"><img src="shots/badges.png" alt="Badges, with Night Owl still unearned"></td>
       <td class="edit"><textarea data-key="badges" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="badges" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-badges" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -256,6 +291,7 @@
       </td>
       <td class="shot"><img src="shots/profile.png" alt="Profile before 20 logs"></td>
       <td class="edit"><textarea data-key="profile" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="profile" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-profile" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -265,6 +301,7 @@
       </td>
       <td class="shot"><img src="shots/chapters.png" alt="Chapters screen with only the New chapter tile"></td>
       <td class="edit"><textarea data-key="chapters" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="chapters" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-chapters" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -272,6 +309,7 @@
       <td class="copy"><p>No languages match 'zzzz'</p></td>
       <td class="shot"><img src="shots/language.png" alt="Language search with no matches"></td>
       <td class="edit"><textarea data-key="language" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="language" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-language" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -282,6 +320,7 @@
       </td>
       <td class="missing">No screenshot</td>
       <td class="edit"><textarea data-key="filtered-day" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="filtered-day" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-filtered-day" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -292,6 +331,7 @@
       </td>
       <td class="missing">No screenshot</td>
       <td class="edit"><textarea data-key="filtered-list" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="filtered-list" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-filtered-list" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -299,6 +339,7 @@
       <td class="copy"><p>Nothing yet</p></td>
       <td class="missing">No screenshot</td>
       <td class="edit"><textarea data-key="hold" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="hold" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-hold" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -309,6 +350,7 @@
       </td>
       <td class="missing">No screenshot</td>
       <td class="edit"><textarea data-key="symbol" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="symbol" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-symbol" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
@@ -319,6 +361,7 @@
       </td>
       <td class="missing">No screenshot</td>
       <td class="edit"><textarea data-key="place" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="updated"><label class="drop"><input type="file" accept="image/*" data-shot="place" aria-label="Updated screen"><img alt=""><span>Add a screenshot</span></label></td>
       <td class="design"><textarea data-key="design-place" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
   </tbody>
@@ -359,6 +402,63 @@
     box.addEventListener('input', () => remember(read()))
   }
 
+  function shotDb() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open('buffalo-empty-state-shots', 1)
+      request.onupgradeneeded = () => request.result.createObjectStore('shots')
+      request.onsuccess = () => resolve(request.result)
+      request.onerror = () => reject(request.error)
+    })
+  }
+
+  function showShot(label, url) {
+    label.querySelector('img').src = url || ''
+    label.classList.toggle('has', Boolean(url))
+  }
+
+  async function storeShot(id, url) {
+    const database = await shotDb()
+    await new Promise((resolve, reject) => {
+      const tx = database.transaction('shots', 'readwrite')
+      tx.objectStore('shots').put(url, id)
+      tx.oncomplete = resolve
+      tx.onerror = () => reject(tx.error)
+    })
+  }
+
+  function useFile(label, file) {
+    if (!file || !file.type.startsWith('image/')) return
+    const reader = new FileReader()
+    reader.onload = async () => {
+      const url = String(reader.result)
+      showShot(label, url)
+      await storeShot(label.querySelector('input').dataset.shot, url)
+    }
+    reader.readAsDataURL(file)
+  }
+
+  for (const label of document.querySelectorAll('.drop')) {
+    const input = label.querySelector('input')
+    input.addEventListener('change', () => useFile(label, input.files && input.files[0]))
+    label.addEventListener('dragover', (event) => event.preventDefault())
+    label.addEventListener('drop', (event) => {
+      event.preventDefault()
+      useFile(label, event.dataTransfer.files && event.dataTransfer.files[0])
+    })
+  }
+
+  shotDb().then((database) => {
+    const tx = database.transaction('shots', 'readonly')
+    const request = tx.objectStore('shots').openCursor()
+    request.onsuccess = () => {
+      const cursor = request.result
+      if (!cursor) return
+      const label = document.querySelector(`input[data-shot="${cursor.key}"]`)?.closest('.drop')
+      if (label) showShot(label, cursor.value)
+      cursor.continue()
+    }
+  })
+
   document.getElementById('save').addEventListener('click', async () => {
     const status = document.getElementById('save-status')
     const edits = read()
@@ -367,9 +467,9 @@
     history.replaceState(null, '', url)
     try {
       await navigator.clipboard.writeText(url)
-      status.textContent = 'Saved. The link is copied. Anyone who opens it sees this wording.'
+      status.textContent = 'Saved. The link is copied. Anyone who opens it sees the wording. Screenshots stay in this browser.'
     } catch {
-      status.textContent = 'Saved. Copy the address bar. Anyone who opens that link sees this wording.'
+      status.textContent = 'Saved. Copy the address bar. Anyone who opens that link sees the wording. Screenshots stay in this browser.'
     }
   })
 </script>
