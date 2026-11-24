@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buffalo empty states</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #1c1917;
+    --muted: #6b645d;
+    --line: #e4ddd4;
+    --paper: #f7f4ef;
+    --card: #fff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+    line-height: 1.45;
+  }
+  header {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 40px 24px 8px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0 0 8px;
+  }
+  header p {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--muted);
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+  }
+  table {
+    width: min(1080px, calc(100% - 32px));
+    margin: 24px auto 64px;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    font-family: ui-monospace, "IBM Plex Mono", monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: #fbf9f6;
+  }
+  td.where {
+    width: 160px;
+    font-family: system-ui, sans-serif;
+    font-weight: 650;
+    font-size: 15px;
+  }
+  td.copy {
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    width: 42%;
+  }
+  td.copy p { margin: 0 0 8px; }
+  td.copy p:last-child { margin: 0; }
+  td.copy .note {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  img {
+    width: 220px;
+    height: auto;
+    display: block;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .missing {
+    font-family: system-ui, sans-serif;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  caption {
+    caption-side: bottom;
+    text-align: left;
+    padding: 12px 4px 0;
+    color: var(--muted);
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Buffalo empty states</h1>
+  <p>English copy on the left, the current phone screen on the right. Shot on 24 Nov 2026 from the test account. The empty log, quiet day, and future day were shown by hiding that account’s moments in the screenshot browser only. Nothing was deleted, and the account was not signed out.</p>
+</header>
+<table>
+  <caption>Source: apps/mobile English strings, as rendered in the app.</caption>
+  <thead>
+    <tr>
+      <th>Where</th>
+      <th>Copy</th>
+      <th>Screen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="where">Log, nothing written yet</td>
+      <td class="copy">
+        <p>Your log · Empty for now</p>
+        <p>Your logs live here.</p>
+        <p>Everything you write lands here, newest first. Start with whichever one’s loudest today.</p>
+        <p>What was good?</p>
+        <p>What was hard?</p>
+        <p>What surprised you?</p>
+      </td>
+      <td><img src="shots/empty-log.png" alt="Empty log card under the week calendar"></td>
+    </tr>
+    <tr>
+      <td class="where">Log, a past empty day</td>
+      <td class="copy">
+        <p>A quiet one on the log.</p>
+        <p>Sunday’s still open. Add whatever you remember, even one line counts.</p>
+        <p>Add to Sun, Nov 22</p>
+        <p class="note">On today, that button reads Log today.</p>
+      </td>
+      <td><img src="shots/quiet-day.png" alt="Quiet day card for Sunday, November 22"></td>
+    </tr>
+    <tr>
+      <td class="where">Log, a future day</td>
+      <td class="copy"><p>Nothing here yet.</p></td>
+      <td><img src="shots/future-day.png" alt="Thursday, November 26 with nothing here yet"></td>
+    </tr>
+    <tr>
+      <td class="where">Search</td>
+      <td class="copy"><p>No loaded moments mention “zzzz-no-moment”.</p></td>
+      <td><img src="shots/search.png" alt="Search with no matching moments"></td>
+    </tr>
+    <tr>
+      <td class="where">Search, one category</td>
+      <td class="copy">
+        <p>No highlights mention “zzzz-no-moment”.</p>
+        <p class="note">The same line for the other filters: No lowlights mention “…” and No surprises mention “…”.</p>
+      </td>
+      <td><img src="shots/search-filter.png" alt="Highlights filter with no matching moments"></td>
+    </tr>
+    <tr>
+      <td class="where">Insights</td>
+      <td class="copy">
+        <p>First insight · Sunday</p>
+        <p>Your first one is on its way.</p>
+        <p>Log a few days this week and Buffalo will have something to show you on Sunday.</p>
+        <p>Log today</p>
+      </td>
+      <td><img src="shots/insights.png" alt="Insights waiting card"></td>
+    </tr>
+    <tr>
+      <td class="where">Saved insights</td>
+      <td class="copy">
+        <p>Nothing saved yet.</p>
+        <p>Insights you keep show up here.</p>
+      </td>
+      <td><img src="shots/saved.png" alt="Saved insights empty page"></td>
+    </tr>
+    <tr>
+      <td class="where">Badges</td>
+      <td class="copy">
+        <p>Earned by being yourself, not by showing up every day. None of them expire.</p>
+        <p>NOVEMBER SPECIAL · 6 DAYS LEFT</p>
+        <p>Pop Quiz</p>
+        <p>Log a highlight about something new you learned this month.</p>
+        <p>7 of 19</p>
+        <p class="note">An unearned badge has no date. A screen reader hears Not earned yet. An earned badge says Earned Sep 21.</p>
+      </td>
+      <td><img src="shots/badges.png" alt="Badges, with Night Owl still unearned"></td>
+    </tr>
+    <tr>
+      <td class="where">Profile</td>
+      <td class="copy">
+        <p>Patterns show up after about 20 logs. You’re at 3.</p>
+        <p>Saved insights, 0</p>
+        <p>Chapters, 0</p>
+        <p class="note">On Edit profile, an empty username reads Not set yet. The rings in this shot say 0 because the screenshot browser was hiding the log. You’re at 3 is the real account.</p>
+      </td>
+      <td><img src="shots/profile.png" alt="Profile before 20 logs"></td>
+    </tr>
+    <tr>
+      <td class="where">Chapters</td>
+      <td class="copy">
+        <p>There is no empty sentence. The only tile is New chapter.</p>
+      </td>
+      <td><img src="shots/chapters.png" alt="Chapters screen with only the New chapter tile"></td>
+    </tr>
+    <tr>
+      <td class="where">Language search</td>
+      <td class="copy"><p>No languages match 'zzzz'</p></td>
+      <td><img src="shots/language.png" alt="Language search with no matches"></td>
+    </tr>
+    <tr>
+      <td class="where">Log, filtered day</td>
+      <td class="copy">
+        <p>Nothing here for that day.</p>
+        <p class="note">A day that has moments, with a category filter that hides all of them. This account’s loaded days each include every category, so this line was not on screen.</p>
+      </td>
+      <td class="missing">No screenshot</td>
+    </tr>
+    <tr>
+      <td class="where">Log, filtered list</td>
+      <td class="copy">
+        <p>No matching moments in the loaded log.</p>
+        <p class="note">The same filter with no day selected, when the loaded log has none of that category.</p>
+      </td>
+      <td class="missing">No screenshot</td>
+    </tr>
+    <tr>
+      <td class="where">Hold an empty day</td>
+      <td class="copy"><p>Nothing yet</p></td>
+      <td class="missing">No screenshot</td>
+    </tr>
+    <tr>
+      <td class="where">Symbol picker</td>
+      <td class="copy">
+        <p>Nothing fits?</p>
+        <p>Try a broader word, like “outdoors” or “trip”. Or skip it. A symbol is optional.</p>
+      </td>
+      <td class="missing">No screenshot</td>
+    </tr>
+    <tr>
+      <td class="where">Place search</td>
+      <td class="copy">
+        <p>Search for a place, or keep any word as just a name.</p>
+        <p>No matches on the map.</p>
+      </td>
+      <td class="missing">No screenshot</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
