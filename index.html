@@ -40,9 +40,11 @@
     font-size: 15px;
   }
   table {
-    width: min(1240px, calc(100% - 32px));
+    width: calc(100% - 32px);
+    max-width: 1280px;
     margin: 24px auto 64px;
     border-collapse: collapse;
+    table-layout: fixed;
     background: var(--card);
     border: 1px solid var(--line);
   }
@@ -62,7 +64,7 @@
     background: #fbf9f6;
   }
   td.where {
-    width: 160px;
+    width: 16%;
     font-family: system-ui, sans-serif;
     font-weight: 650;
     font-size: 15px;
@@ -70,7 +72,7 @@
   td.copy {
     font-family: system-ui, sans-serif;
     font-size: 15px;
-    width: 42%;
+    width: 28%;
   }
   td.copy p { margin: 0 0 8px; }
   td.copy p:last-child { margin: 0; }
@@ -79,28 +81,31 @@
     color: var(--muted);
     font-size: 13px;
   }
+  td.shot { width: 168px; }
   img {
-    width: 200px;
+    width: 140px;
     height: auto;
     display: block;
     border: 1px solid var(--line);
     background: var(--paper);
   }
-  td.edit {
-    min-width: 260px;
-    font-family: system-ui, sans-serif;
-    font-size: 15px;
-    white-space: pre-wrap;
-    background: #fffdf8;
-  }
-  td.edit:focus {
-    outline: 2px solid var(--ink);
-    outline-offset: -2px;
+  td.edit { width: 28%; }
+  textarea {
+    display: block;
+    width: 100%;
+    min-height: 160px;
+    box-sizing: border-box;
+    resize: vertical;
+    border: 1px solid #1c1917;
+    border-radius: 8px;
+    padding: 12px;
+    font: 15px/1.4 system-ui, sans-serif;
+    color: var(--ink);
     background: #fff;
   }
-  td.edit:empty::before {
-    content: "Write the new copy";
-    color: #b0a79e;
+  textarea:focus {
+    outline: 2px solid var(--ink);
+    outline-offset: 1px;
   }
   .missing {
     font-family: system-ui, sans-serif;
@@ -143,8 +148,8 @@
         <p>What was hard?</p>
         <p>What surprised you?</p>
       </td>
-      <td><img src="shots/empty-log.png" alt="Empty log card under the week calendar"></td>
-      <td class="edit" data-key="empty-log" contenteditable="true"></td>
+      <td class="shot"><img src="shots/empty-log.png" alt="Empty log card under the week calendar"></td>
+      <td class="edit"><textarea data-key="empty-log" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Log, a past empty day</td>
@@ -154,20 +159,20 @@
         <p>Add to Sun, Nov 22</p>
         <p class="note">On today, that button reads Log today.</p>
       </td>
-      <td><img src="shots/quiet-day.png" alt="Quiet day card for Sunday, November 22"></td>
-      <td class="edit" data-key="quiet-day" contenteditable="true"></td>
+      <td class="shot"><img src="shots/quiet-day.png" alt="Quiet day card for Sunday, November 22"></td>
+      <td class="edit"><textarea data-key="quiet-day" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Log, a future day</td>
       <td class="copy"><p>Nothing here yet.</p></td>
-      <td><img src="shots/future-day.png" alt="Thursday, November 26 with nothing here yet"></td>
-      <td class="edit" data-key="future-day" contenteditable="true"></td>
+      <td class="shot"><img src="shots/future-day.png" alt="Thursday, November 26 with nothing here yet"></td>
+      <td class="edit"><textarea data-key="future-day" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Search</td>
       <td class="copy"><p>No loaded moments mention “zzzz-no-moment”.</p></td>
-      <td><img src="shots/search.png" alt="Search with no matching moments"></td>
-      <td class="edit" data-key="search" contenteditable="true"></td>
+      <td class="shot"><img src="shots/search.png" alt="Search with no matching moments"></td>
+      <td class="edit"><textarea data-key="search" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Search, one category</td>
@@ -175,8 +180,8 @@
         <p>No highlights mention “zzzz-no-moment”.</p>
         <p class="note">The same line for the other filters: No lowlights mention “…” and No surprises mention “…”.</p>
       </td>
-      <td><img src="shots/search-filter.png" alt="Highlights filter with no matching moments"></td>
-      <td class="edit" data-key="search-filter" contenteditable="true"></td>
+      <td class="shot"><img src="shots/search-filter.png" alt="Highlights filter with no matching moments"></td>
+      <td class="edit"><textarea data-key="search-filter" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Insights</td>
@@ -186,8 +191,8 @@
         <p>Log a few days this week and Buffalo will have something to show you on Sunday.</p>
         <p>Log today</p>
       </td>
-      <td><img src="shots/insights.png" alt="Insights waiting card"></td>
-      <td class="edit" data-key="insights" contenteditable="true"></td>
+      <td class="shot"><img src="shots/insights.png" alt="Insights waiting card"></td>
+      <td class="edit"><textarea data-key="insights" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Saved insights</td>
@@ -195,8 +200,8 @@
         <p>Nothing saved yet.</p>
         <p>Insights you keep show up here.</p>
       </td>
-      <td><img src="shots/saved.png" alt="Saved insights empty page"></td>
-      <td class="edit" data-key="saved" contenteditable="true"></td>
+      <td class="shot"><img src="shots/saved.png" alt="Saved insights empty page"></td>
+      <td class="edit"><textarea data-key="saved" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Badges</td>
@@ -208,8 +213,8 @@
         <p>7 of 19</p>
         <p class="note">An unearned badge has no date. A screen reader hears Not earned yet. An earned badge says Earned Sep 21.</p>
       </td>
-      <td><img src="shots/badges.png" alt="Badges, with Night Owl still unearned"></td>
-      <td class="edit" data-key="badges" contenteditable="true"></td>
+      <td class="shot"><img src="shots/badges.png" alt="Badges, with Night Owl still unearned"></td>
+      <td class="edit"><textarea data-key="badges" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Profile</td>
@@ -219,22 +224,22 @@
         <p>Chapters, 0</p>
         <p class="note">On Edit profile, an empty username reads Not set yet. The rings in this shot say 0 because the screenshot browser was hiding the log. You’re at 3 is the real account.</p>
       </td>
-      <td><img src="shots/profile.png" alt="Profile before 20 logs"></td>
-      <td class="edit" data-key="profile" contenteditable="true"></td>
+      <td class="shot"><img src="shots/profile.png" alt="Profile before 20 logs"></td>
+      <td class="edit"><textarea data-key="profile" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Chapters</td>
       <td class="copy">
         <p>There is no empty sentence. The only tile is New chapter.</p>
       </td>
-      <td><img src="shots/chapters.png" alt="Chapters screen with only the New chapter tile"></td>
-      <td class="edit" data-key="chapters" contenteditable="true"></td>
+      <td class="shot"><img src="shots/chapters.png" alt="Chapters screen with only the New chapter tile"></td>
+      <td class="edit"><textarea data-key="chapters" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Language search</td>
       <td class="copy"><p>No languages match 'zzzz'</p></td>
-      <td><img src="shots/language.png" alt="Language search with no matches"></td>
-      <td class="edit" data-key="language" contenteditable="true"></td>
+      <td class="shot"><img src="shots/language.png" alt="Language search with no matches"></td>
+      <td class="edit"><textarea data-key="language" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Log, filtered day</td>
@@ -243,7 +248,7 @@
         <p class="note">A day that has moments, with a category filter that hides all of them. This account’s loaded days each include every category, so this line was not on screen.</p>
       </td>
       <td class="missing">No screenshot</td>
-      <td class="edit" data-key="filtered-day" contenteditable="true"></td>
+      <td class="edit"><textarea data-key="filtered-day" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Log, filtered list</td>
@@ -252,13 +257,13 @@
         <p class="note">The same filter with no day selected, when the loaded log has none of that category.</p>
       </td>
       <td class="missing">No screenshot</td>
-      <td class="edit" data-key="filtered-list" contenteditable="true"></td>
+      <td class="edit"><textarea data-key="filtered-list" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Hold an empty day</td>
       <td class="copy"><p>Nothing yet</p></td>
       <td class="missing">No screenshot</td>
-      <td class="edit" data-key="hold" contenteditable="true"></td>
+      <td class="edit"><textarea data-key="hold" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Symbol picker</td>
@@ -267,7 +272,7 @@
         <p>Try a broader word, like “outdoors” or “trip”. Or skip it. A symbol is optional.</p>
       </td>
       <td class="missing">No screenshot</td>
-      <td class="edit" data-key="symbol" contenteditable="true"></td>
+      <td class="edit"><textarea data-key="symbol" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
     <tr>
       <td class="where">Place search</td>
@@ -276,20 +281,19 @@
         <p>No matches on the map.</p>
       </td>
       <td class="missing">No screenshot</td>
-      <td class="edit" data-key="place" contenteditable="true"></td>
+      <td class="edit"><textarea data-key="place" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
     </tr>
   </tbody>
 </table>
 <script>
   const storageKey = 'buffalo-empty-state-edits'
   const saved = JSON.parse(localStorage.getItem(storageKey) || '{}')
-  for (const cell of document.querySelectorAll('td.edit')) {
-    const id = cell.dataset.key
-    if (saved[id]) cell.textContent = saved[id]
-    cell.addEventListener('input', () => {
+  for (const box of document.querySelectorAll('textarea')) {
+    const id = box.dataset.key
+    if (saved[id]) box.value = saved[id]
+    box.addEventListener('input', () => {
       const next = JSON.parse(localStorage.getItem(storageKey) || '{}')
-      const text = cell.innerText.replace(/\n$/, '')
-      if (text) next[id] = text
+      if (box.value) next[id] = box.value
       else delete next[id]
       localStorage.setItem(storageKey, JSON.stringify(next))
     })
