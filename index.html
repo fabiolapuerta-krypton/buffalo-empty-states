@@ -22,7 +22,7 @@
     line-height: 1.45;
   }
   header {
-    max-width: 1240px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 40px 24px 8px;
   }
@@ -61,7 +61,7 @@
   }
   table {
     width: calc(100% - 32px);
-    max-width: 1280px;
+    max-width: 1440px;
     margin: 24px auto 64px;
     border-collapse: collapse;
     table-layout: fixed;
@@ -84,7 +84,7 @@
     background: #fbf9f6;
   }
   td.where {
-    width: 16%;
+    width: 14%;
     font-family: system-ui, sans-serif;
     font-weight: 650;
     font-size: 15px;
@@ -92,7 +92,7 @@
   td.copy {
     font-family: system-ui, sans-serif;
     font-size: 15px;
-    width: 28%;
+    width: 22%;
   }
   td.copy p { margin: 0 0 8px; }
   td.copy p:last-child { margin: 0; }
@@ -109,7 +109,7 @@
     border: 1px solid var(--line);
     background: var(--paper);
   }
-  td.edit { width: 28%; }
+  td.edit, td.design { width: 22%; }
   textarea {
     display: block;
     width: 100%;
@@ -145,7 +145,7 @@
 <body>
 <header>
   <h1>Buffalo empty states</h1>
-  <p>English copy, then the current phone screen, then a box for the wording you want instead. Click Save when you want to keep it. Saving updates the address bar and copies that link. Anyone who opens the copied link sees your wording. Shot on 24 Nov 2026 from the test account. The empty log, quiet day, and future day were shown by hiding that account’s moments in the screenshot browser only. Nothing was deleted, and the account was not signed out.</p>
+  <p>English copy, then the current phone screen, then a box for the wording you want instead, then a box for design comments. Click Save when you want to keep both. Saving updates the address bar and copies that link. Anyone who opens the copied link sees what you wrote. Shot on 24 Nov 2026 from the test account. The empty log, quiet day, and future day were shown by hiding that account’s moments in the screenshot browser only. Nothing was deleted, and the account was not signed out.</p>
   <p class="save-row"><button id="save" type="button">Save</button><span id="save-status"></span></p>
 </header>
 <table>
@@ -156,6 +156,7 @@
       <th>Copy</th>
       <th>Screen</th>
       <th>New copy</th>
+      <th>Design comments</th>
     </tr>
   </thead>
   <tbody>
@@ -171,6 +172,7 @@
       </td>
       <td class="shot"><img src="shots/empty-log.png" alt="Empty log card under the week calendar"></td>
       <td class="edit"><textarea data-key="empty-log" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-empty-log" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Log, a past empty day</td>
@@ -182,18 +184,21 @@
       </td>
       <td class="shot"><img src="shots/quiet-day.png" alt="Quiet day card for Sunday, November 22"></td>
       <td class="edit"><textarea data-key="quiet-day" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-quiet-day" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Log, a future day</td>
       <td class="copy"><p>Nothing here yet.</p></td>
       <td class="shot"><img src="shots/future-day.png" alt="Thursday, November 26 with nothing here yet"></td>
       <td class="edit"><textarea data-key="future-day" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-future-day" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Search</td>
       <td class="copy"><p>No loaded moments mention “zzzz-no-moment”.</p></td>
       <td class="shot"><img src="shots/search.png" alt="Search with no matching moments"></td>
       <td class="edit"><textarea data-key="search" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-search" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Search, one category</td>
@@ -203,6 +208,7 @@
       </td>
       <td class="shot"><img src="shots/search-filter.png" alt="Highlights filter with no matching moments"></td>
       <td class="edit"><textarea data-key="search-filter" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-search-filter" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Insights</td>
@@ -214,6 +220,7 @@
       </td>
       <td class="shot"><img src="shots/insights.png" alt="Insights waiting card"></td>
       <td class="edit"><textarea data-key="insights" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-insights" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Saved insights</td>
@@ -223,6 +230,7 @@
       </td>
       <td class="shot"><img src="shots/saved.png" alt="Saved insights empty page"></td>
       <td class="edit"><textarea data-key="saved" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-saved" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Badges</td>
@@ -236,6 +244,7 @@
       </td>
       <td class="shot"><img src="shots/badges.png" alt="Badges, with Night Owl still unearned"></td>
       <td class="edit"><textarea data-key="badges" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-badges" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Profile</td>
@@ -247,6 +256,7 @@
       </td>
       <td class="shot"><img src="shots/profile.png" alt="Profile before 20 logs"></td>
       <td class="edit"><textarea data-key="profile" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-profile" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Chapters</td>
@@ -255,12 +265,14 @@
       </td>
       <td class="shot"><img src="shots/chapters.png" alt="Chapters screen with only the New chapter tile"></td>
       <td class="edit"><textarea data-key="chapters" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-chapters" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Language search</td>
       <td class="copy"><p>No languages match 'zzzz'</p></td>
       <td class="shot"><img src="shots/language.png" alt="Language search with no matches"></td>
       <td class="edit"><textarea data-key="language" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-language" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Log, filtered day</td>
@@ -270,6 +282,7 @@
       </td>
       <td class="missing">No screenshot</td>
       <td class="edit"><textarea data-key="filtered-day" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-filtered-day" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Log, filtered list</td>
@@ -279,12 +292,14 @@
       </td>
       <td class="missing">No screenshot</td>
       <td class="edit"><textarea data-key="filtered-list" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-filtered-list" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Hold an empty day</td>
       <td class="copy"><p>Nothing yet</p></td>
       <td class="missing">No screenshot</td>
       <td class="edit"><textarea data-key="hold" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-hold" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Symbol picker</td>
@@ -294,6 +309,7 @@
       </td>
       <td class="missing">No screenshot</td>
       <td class="edit"><textarea data-key="symbol" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-symbol" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
       <td class="where">Place search</td>
@@ -303,6 +319,7 @@
       </td>
       <td class="missing">No screenshot</td>
       <td class="edit"><textarea data-key="place" aria-label="New copy" placeholder="Write the new copy"></textarea></td>
+      <td class="design"><textarea data-key="design-place" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
   </tbody>
 </table>
