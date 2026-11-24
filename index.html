@@ -22,7 +22,7 @@
     line-height: 1.45;
   }
   header {
-    max-width: 1080px;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 40px 24px 8px;
   }
@@ -40,7 +40,7 @@
     font-size: 15px;
   }
   table {
-    width: min(1080px, calc(100% - 32px));
+    width: min(1240px, calc(100% - 32px));
     margin: 24px auto 64px;
     border-collapse: collapse;
     background: var(--card);
@@ -80,11 +80,27 @@
     font-size: 13px;
   }
   img {
-    width: 220px;
+    width: 200px;
     height: auto;
     display: block;
     border: 1px solid var(--line);
     background: var(--paper);
+  }
+  td.edit {
+    min-width: 260px;
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    white-space: pre-wrap;
+    background: #fffdf8;
+  }
+  td.edit:focus {
+    outline: 2px solid var(--ink);
+    outline-offset: -2px;
+    background: #fff;
+  }
+  td.edit:empty::before {
+    content: "Write the new copy";
+    color: #b0a79e;
   }
   .missing {
     font-family: system-ui, sans-serif;
@@ -104,7 +120,7 @@
 <body>
 <header>
   <h1>Buffalo empty states</h1>
-  <p>English copy on the left, the current phone screen on the right. Shot on 24 Nov 2026 from the test account. The empty log, quiet day, and future day were shown by hiding that account’s moments in the screenshot browser only. Nothing was deleted, and the account was not signed out.</p>
+  <p>English copy, then the current phone screen, then a blank column for the wording you want instead. Click a cell in that column and type. What you write stays in this browser. Shot on 24 Nov 2026 from the test account. The empty log, quiet day, and future day were shown by hiding that account’s moments in the screenshot browser only. Nothing was deleted, and the account was not signed out.</p>
 </header>
 <table>
   <caption>Source: apps/mobile English strings, as rendered in the app.</caption>
@@ -113,6 +129,7 @@
       <th>Where</th>
       <th>Copy</th>
       <th>Screen</th>
+      <th>New copy</th>
     </tr>
   </thead>
   <tbody>
@@ -127,6 +144,7 @@
         <p>What surprised you?</p>
       </td>
       <td><img src="shots/empty-log.png" alt="Empty log card under the week calendar"></td>
+      <td class="edit" data-key="empty-log" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Log, a past empty day</td>
@@ -137,16 +155,19 @@
         <p class="note">On today, that button reads Log today.</p>
       </td>
       <td><img src="shots/quiet-day.png" alt="Quiet day card for Sunday, November 22"></td>
+      <td class="edit" data-key="quiet-day" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Log, a future day</td>
       <td class="copy"><p>Nothing here yet.</p></td>
       <td><img src="shots/future-day.png" alt="Thursday, November 26 with nothing here yet"></td>
+      <td class="edit" data-key="future-day" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Search</td>
       <td class="copy"><p>No loaded moments mention “zzzz-no-moment”.</p></td>
       <td><img src="shots/search.png" alt="Search with no matching moments"></td>
+      <td class="edit" data-key="search" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Search, one category</td>
@@ -155,6 +176,7 @@
         <p class="note">The same line for the other filters: No lowlights mention “…” and No surprises mention “…”.</p>
       </td>
       <td><img src="shots/search-filter.png" alt="Highlights filter with no matching moments"></td>
+      <td class="edit" data-key="search-filter" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Insights</td>
@@ -165,6 +187,7 @@
         <p>Log today</p>
       </td>
       <td><img src="shots/insights.png" alt="Insights waiting card"></td>
+      <td class="edit" data-key="insights" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Saved insights</td>
@@ -173,6 +196,7 @@
         <p>Insights you keep show up here.</p>
       </td>
       <td><img src="shots/saved.png" alt="Saved insights empty page"></td>
+      <td class="edit" data-key="saved" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Badges</td>
@@ -185,6 +209,7 @@
         <p class="note">An unearned badge has no date. A screen reader hears Not earned yet. An earned badge says Earned Sep 21.</p>
       </td>
       <td><img src="shots/badges.png" alt="Badges, with Night Owl still unearned"></td>
+      <td class="edit" data-key="badges" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Profile</td>
@@ -195,6 +220,7 @@
         <p class="note">On Edit profile, an empty username reads Not set yet. The rings in this shot say 0 because the screenshot browser was hiding the log. You’re at 3 is the real account.</p>
       </td>
       <td><img src="shots/profile.png" alt="Profile before 20 logs"></td>
+      <td class="edit" data-key="profile" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Chapters</td>
@@ -202,11 +228,13 @@
         <p>There is no empty sentence. The only tile is New chapter.</p>
       </td>
       <td><img src="shots/chapters.png" alt="Chapters screen with only the New chapter tile"></td>
+      <td class="edit" data-key="chapters" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Language search</td>
       <td class="copy"><p>No languages match 'zzzz'</p></td>
       <td><img src="shots/language.png" alt="Language search with no matches"></td>
+      <td class="edit" data-key="language" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Log, filtered day</td>
@@ -215,6 +243,7 @@
         <p class="note">A day that has moments, with a category filter that hides all of them. This account’s loaded days each include every category, so this line was not on screen.</p>
       </td>
       <td class="missing">No screenshot</td>
+      <td class="edit" data-key="filtered-day" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Log, filtered list</td>
@@ -223,11 +252,13 @@
         <p class="note">The same filter with no day selected, when the loaded log has none of that category.</p>
       </td>
       <td class="missing">No screenshot</td>
+      <td class="edit" data-key="filtered-list" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Hold an empty day</td>
       <td class="copy"><p>Nothing yet</p></td>
       <td class="missing">No screenshot</td>
+      <td class="edit" data-key="hold" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Symbol picker</td>
@@ -236,6 +267,7 @@
         <p>Try a broader word, like “outdoors” or “trip”. Or skip it. A symbol is optional.</p>
       </td>
       <td class="missing">No screenshot</td>
+      <td class="edit" data-key="symbol" contenteditable="true"></td>
     </tr>
     <tr>
       <td class="where">Place search</td>
@@ -244,8 +276,24 @@
         <p>No matches on the map.</p>
       </td>
       <td class="missing">No screenshot</td>
+      <td class="edit" data-key="place" contenteditable="true"></td>
     </tr>
   </tbody>
 </table>
+<script>
+  const storageKey = 'buffalo-empty-state-edits'
+  const saved = JSON.parse(localStorage.getItem(storageKey) || '{}')
+  for (const cell of document.querySelectorAll('td.edit')) {
+    const id = cell.dataset.key
+    if (saved[id]) cell.textContent = saved[id]
+    cell.addEventListener('input', () => {
+      const next = JSON.parse(localStorage.getItem(storageKey) || '{}')
+      const text = cell.innerText.replace(/\n$/, '')
+      if (text) next[id] = text
+      else delete next[id]
+      localStorage.setItem(storageKey, JSON.stringify(next))
+    })
+  }
+</script>
 </body>
 </html>
