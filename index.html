@@ -89,6 +89,12 @@
     color: var(--muted);
     background: #fbf9f6;
   }
+  td.num {
+    width: 48px;
+    font-family: ui-monospace, "IBM Plex Mono", monospace;
+    font-size: 15px;
+    font-weight: 500;
+  }
   td.where {
     width: 14%;
     font-family: system-ui, sans-serif;
@@ -185,6 +191,7 @@
   <caption>Source: apps/mobile English strings, as rendered in the app.</caption>
   <thead>
     <tr>
+      <th>No.</th>
       <th>Where</th>
       <th>Copy</th>
       <th>Screen</th>
@@ -195,6 +202,7 @@
   </thead>
   <tbody>
     <tr>
+      <td class="num" id="row-1">1</td>
       <td class="where">Log, nothing written yet</td>
       <td class="copy">
         <p>Your log · Empty for now</p>
@@ -210,6 +218,7 @@
       <td class="design"><textarea data-key="design-empty-log" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-2">2</td>
       <td class="where">Log, a past empty day</td>
       <td class="copy">
         <p>A quiet one on the log.</p>
@@ -223,6 +232,7 @@
       <td class="design"><textarea data-key="design-quiet-day" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-3">3</td>
       <td class="where">Log, a future day</td>
       <td class="copy"><p>Nothing here yet.</p></td>
       <td class="shot"><img src="shots/future-day.png" alt="Thursday, November 26 with nothing here yet"></td>
@@ -231,6 +241,7 @@
       <td class="design"><textarea data-key="design-future-day" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-4">4</td>
       <td class="where">Search</td>
       <td class="copy"><p>No loaded moments mention “zzzz-no-moment”.</p></td>
       <td class="shot"><img src="shots/search.png" alt="Search with no matching moments"></td>
@@ -239,6 +250,7 @@
       <td class="design"><textarea data-key="design-search" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-5">5</td>
       <td class="where">Search, one category</td>
       <td class="copy">
         <p>No highlights mention “zzzz-no-moment”.</p>
@@ -250,6 +262,7 @@
       <td class="design"><textarea data-key="design-search-filter" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-6">6</td>
       <td class="where">Insights</td>
       <td class="copy">
         <p>First insight · Sunday</p>
@@ -263,6 +276,7 @@
       <td class="design"><textarea data-key="design-insights" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-7">7</td>
       <td class="where">Saved insights</td>
       <td class="copy">
         <p>Nothing saved yet.</p>
@@ -274,6 +288,7 @@
       <td class="design"><textarea data-key="design-saved" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-8">8</td>
       <td class="where">Badges</td>
       <td class="copy">
         <p>Earned by being yourself, not by showing up every day. None of them expire.</p>
@@ -289,6 +304,7 @@
       <td class="design"><textarea data-key="design-badges" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-9">9</td>
       <td class="where">Profile</td>
       <td class="copy">
         <p>Patterns show up after about 20 logs. You’re at 3.</p>
@@ -302,6 +318,7 @@
       <td class="design"><textarea data-key="design-profile" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-10">10</td>
       <td class="where">Chapters</td>
       <td class="copy">
         <p>There is no empty sentence. The only tile is New chapter.</p>
@@ -312,6 +329,7 @@
       <td class="design"><textarea data-key="design-chapters" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-11">11</td>
       <td class="where">Language search</td>
       <td class="copy"><p>No languages match 'zzzz'</p></td>
       <td class="shot"><img src="shots/language.png" alt="Language search with no matches"></td>
@@ -320,6 +338,7 @@
       <td class="design"><textarea data-key="design-language" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-12">12</td>
       <td class="where">Log, filtered day</td>
       <td class="copy">
         <p>Nothing here for that day.</p>
@@ -331,6 +350,7 @@
       <td class="design"><textarea data-key="design-filtered-day" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-13">13</td>
       <td class="where">Log, filtered list</td>
       <td class="copy">
         <p>No matching moments in the loaded log.</p>
@@ -342,6 +362,7 @@
       <td class="design"><textarea data-key="design-filtered-list" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-14">14</td>
       <td class="where">Hold an empty day</td>
       <td class="copy"><p>Nothing yet</p></td>
       <td class="missing">No screenshot</td>
@@ -350,6 +371,7 @@
       <td class="design"><textarea data-key="design-hold" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-15">15</td>
       <td class="where">Symbol picker</td>
       <td class="copy">
         <p>Nothing fits?</p>
@@ -361,6 +383,7 @@
       <td class="design"><textarea data-key="design-symbol" aria-label="Design comments" placeholder="Design comments"></textarea></td>
     </tr>
     <tr>
+      <td class="num" id="row-16">16</td>
       <td class="where">Place search</td>
       <td class="copy">
         <p>Search for a place, or keep any word as just a name.</p>
